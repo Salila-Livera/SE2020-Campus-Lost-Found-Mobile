@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Environment secrets – never commit these
+backend/.env
+frontend/.env
+
+# Expo / React Native build artifacts
+.expo/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
