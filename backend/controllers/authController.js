@@ -3,7 +3,7 @@ const { body } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
-// ── Helper: JWT signing utility ──────────────────────────────────────────────
+// ── signToken: create JWT with user id payload ───────────────────────────────
 const signToken = (id) => {
   const secret = process.env.JWT_SECRET;
   if (!secret) {
