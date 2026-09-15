@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true } // adds createdAt and updatedAt automatically
 );
 
-// Pre-save hook: hash password only when modified
+// bcrypt pre-save: hash before persisting to DB
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
