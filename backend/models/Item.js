@@ -53,7 +53,7 @@ const itemSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Compound and lookup indexes for fast listing and filtering
+// Indexes: compound for listing, single-field for category
 itemSchema.index({ itemType: 1, status: 1, createdAt: -1 });
 itemSchema.index({ postedBy: 1, createdAt: -1 });
 itemSchema.index({ category: 1 });
