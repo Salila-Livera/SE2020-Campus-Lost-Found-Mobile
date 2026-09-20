@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-// JWT guard middleware - precedes any protected route handler
+// Middleware that checks the Authorization header for a valid JWT
 const protect = async (req, res, next) => {
   let token;
 
