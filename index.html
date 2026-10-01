@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+      color: #222;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <p>This is a simple HTML page.</p>
+  <button onclick="document.getElementById('msg').textContent = 'You clicked the button!'">Click me</button>
+  <p id="msg"></p>
+</body>
+</html>
