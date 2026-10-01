@@ -57,24 +57,31 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () =>
-  console.log(`Server running in ${process.env.NODE_ENV || "development"} mode on port ${PORT}`)
-);
 
-// Graceful shutdown
-const handleShutdown = (signal) => {
-  console.log(`Received ${signal}. Shutting down gracefully...`);
-  server.close(async () => {
-    try {
-      const mongoose = require("mongoose");
-      await mongoose.connection.close(false);
-      console.log("MongoDB connection closed.");
-      process.exit(0);
-    } catch (e) {
-      process.exit(1);
-    }
-  });
-};
+// Only start the HTTP server when running directly (not imported by Vercel)
+if (require.main === module) {
+  const server = app.listen(PORT, () =>
+    console.log(`Server running in ${process.env.NODE_ENV || "development"} mode on port ${PORT}`)
+  );
 
-process.on("SIGTERM", () => handleShutdown("SIGTERM"));
-process.on("SIGINT", () => handleShutdown("SIGINT"));
+  // Graceful shutdown
+  const handleShutdown = (signal) => {
+    console.log(`Received ${signal}. Shutting down gracefully...`);
+    server.close(async () => {
+      try {
+        const mongoose = require("mongoose");
+        await mongoose.connection.close(false);
+        console.log("MongoDB connection closed.");
+        process.exit(0);
+      } catch (e) {
+        process.exit(1);
+      }
+    });
+  };
+
+  process.on("SIGTERM", () => handleShutdown("SIGTERM"));
+  process.on("SIGINT", () => handleShutdown("SIGINT"));
+}
+
+// Export for Vercel serverless (api/index.js imports this)
+module.exports = app;
