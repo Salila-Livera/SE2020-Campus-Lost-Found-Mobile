@@ -1,0 +1,35 @@
+Starting Metro Bundler
+
+Web Bundling failed 758ms index.js (662 modules)
+
+
+Error: Unable to resolve module @expo/vector-icons from D:\Campus-Lost-Found-Mobile\frontend\src\screens\ItemDetailScreen.js: @expo/vector-icons could not be found within the project or in these directories:
+  node_modules
+[0m [90m 14 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m"../context/AuthContext"[39m[33m;[39m
+ [90m 15 |[39m [36mimport[39m { [33mCOLORS[39m[33m,[39m [33mSHADOWS[39m } [36mfrom[39m [32m"../styles/theme"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 16 |[39m [36mimport[39m { [33mIonicons[39m } [36mfrom[39m [32m"@expo/vector-icons"[39m[33m;[39m
+ [90m    |[39m                           [31m[1m^[22m[39m
+ [90m 17 |[39m
+ [90m 18 |[39m [36mconst[39m [33mItemDetailScreen[39m [33m=[39m ({ route[33m,[39m navigation }) [33m=>[39m {
+ [90m 19 |[39m   [36mconst[39m { itemId } [33m=[39m route[33m.[39mparams[33m;[39m[0m
+
+Import stack:
+
+ src\screens\ItemDetailScreen.js
+ | import "@expo/vector-icons"
+
+ src\navigation\MainStack.js
+ | import "../screens/ItemDetailScreen"
+
+ src\navigation\AppNavigator.js
+ | import "./MainStack"
+
+ App.js
+ | import "./src/navigation/AppNavigator"
+
+ index.js
+ | import "./App"
+
+ 
+ | import "./index"
+
